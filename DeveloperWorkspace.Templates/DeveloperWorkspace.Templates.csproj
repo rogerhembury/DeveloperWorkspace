@@ -5,6 +5,7 @@
     <PackageVersion>0.1.3</PackageVersion>
     <Title>Developer Workspace Templates</Title>
     <Authors>Roger Hembury</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Description>Project templates for creating a Git-tracked developer workspace for AI prompts, architecture decisions, plans, ideas, investigations, checkpoints, and development notes.</Description>
     <PackageTags>developer-workspace;documentation;development;ai;prompts;architecture;planning</PackageTags>
     <PackageProjectUrl>https://github.com/rogerhembury/DeveloperWorkspace</PackageProjectUrl>
