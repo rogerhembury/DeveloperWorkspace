@@ -60,6 +60,7 @@ $RequiredEntries = @(
     "README.md",
     "content/Developer.Workspace/.template.config/template.json",
     "content/Developer.Workspace/Developer.Workspace.csproj",
+    "content/Developer.Workspace/README.md",
     "content/Developer.Workspace/AI Prompts/Analysis/example-analysis.md",
     "content/Developer.Workspace/AI Prompts/Chores/example-chore.md",
     "content/Developer.Workspace/AI Prompts/Features/example-feature.md",
