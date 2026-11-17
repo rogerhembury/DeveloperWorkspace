@@ -1,1 +1,3 @@
-<Solution />
+<Solution>
+  <Project Path="Developer.Workspace/Developer.Workspace.csproj" />
+</Solution>
