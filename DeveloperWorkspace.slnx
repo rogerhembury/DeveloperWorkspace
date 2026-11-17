@@ -1,4 +1,4 @@
 <Solution>
   <Project Path="Developer.Workspace/Developer.Workspace.csproj" />
-  <Project Path="DeveloperWorkspace.Templates.csproj" />
+  <Project Path="DeveloperWorkspace.Templates/DeveloperWorkspace.Templates.csproj" />
 </Solution>
