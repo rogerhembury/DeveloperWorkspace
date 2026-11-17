@@ -88,6 +88,48 @@ if ($ForbiddenEntries) {
 
 Write-Host "Package contents are valid."
 
+
+Write-Host ""
+Write-Host "Validating packaged README..."
+
+$RepositoryReadme = Join-Path $RepositoryRoot "README.md"
+$ExtractPath = Join-Path $TestRoot "PackageContents"
+
+if (Test-Path $ExtractPath) {
+    Remove-Item $ExtractPath -Recurse -Force
+}
+
+New-Item -ItemType Directory -Path $ExtractPath | Out-Null
+
+Push-Location $ExtractPath
+
+try {
+    tar -xf $PackagePath "README.md"
+
+    if ($LASTEXITCODE -ne 0) {
+        throw "Could not extract README.md from package."
+    }
+}
+finally {
+    Pop-Location
+}
+
+$ExtractedReadme = Join-Path $ExtractPath "README.md"
+
+if (-not (Test-Path $ExtractedReadme)) {
+    throw "Extracted package README.md was not found."
+}
+
+$RepositoryReadmeHash = (Get-FileHash $RepositoryReadme -Algorithm SHA256).Hash
+$PackageReadmeHash = (Get-FileHash $ExtractedReadme -Algorithm SHA256).Hash
+
+if ($RepositoryReadmeHash -ne $PackageReadmeHash) {
+    throw "Packaged README.md does not exactly match repository README.md."
+}
+
+Write-Host "Packaged README exactly matches repository README."
+
+
 Write-Host ""
 Write-Host "Installing package..."
 
