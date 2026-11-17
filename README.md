@@ -193,6 +193,36 @@ infrastructure such as **Dependencies**, and building the project produces an ot
 Those are accepted trade\-offs in the current implementation in exchange for keeping the project simple, 
 portable, and dependency\-free.
 
+## Development and testing
+
+The repository includes an automated smoke test for the template:
+
+    .\scripts\Test-DeveloperWorkspace.ps1
+
+Run the script from the repository root before preparing a release.
+
+The test:
+
+- packs `DeveloperWorkspace.Templates`;
+- verifies the expected NuGet package was created;
+- inspects the package contents;
+- verifies required template files are present;
+- checks that `bin` and `obj` files have not leaked into the package;
+- installs the newly built template package;
+- generates a fresh workspace in the system temporary directory;
+- verifies the expected workspace folders exist;
+- verifies `.template.config` has not leaked into the generated workspace or project file;
+- builds the generated workspace;
+- removes the temporary test workspace after a successful run.
+
+A successful run finishes with:
+
+    ========================================
+    Developer Workspace template test PASSED
+    ========================================
+
+The smoke test should pass before a package is tagged or published as a release.
+
 ## Current status
 
 The current private preview is **0.1.1**.
